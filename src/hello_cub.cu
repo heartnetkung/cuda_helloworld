@@ -50,7 +50,7 @@ int main() {
 
 	// Determine temporary device storage requirements
 	void     *d_temp_storage = NULL;
-	size_t   temp_storage_bytes = 0;
+	size_t   temp_storage_bytes = 1024;
 	cub::DeviceReduce::ReduceByKey(d_temp_storage, temp_storage_bytes, d_keys_in, d_unique_out, d_values_in, d_aggregates_out, d_num_runs_out, reduction_op, num_items);
 	// Allocate temporary storage
 	cudaMalloc(&d_temp_storage, temp_storage_bytes);
