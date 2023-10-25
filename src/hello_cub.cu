@@ -60,6 +60,7 @@ int main() {
 	// d_aggregates_out  <-- [0, 1, 6, 2, 4]
 	// d_num_runs_out    <-- [5]
 
+	cudaDeviceSynchronize();
 	printf("d_num_runs_out %d",d_num_runs_out[0]);
 	print_int_array(d_unique_out, d_num_runs_out[0]);
 	print_int_array(d_aggregates_out, d_num_runs_out[0]);
