@@ -5,7 +5,7 @@
 struct CustomMin
 {
 	template <typename T>
-	CUB_RUNTIME_FUNCTION __forceinline__
+	CUB_RUNTIME_FUNCTION __forceinline__ __device__
 	T operator()(const T &a, const T &b) const {
 		return (b < a) ? b : a;
 	}
@@ -48,5 +48,7 @@ int main() {
 	// d_unique_out      <-- [0, 2, 9, 5, 8]
 	// d_aggregates_out  <-- [0, 1, 6, 2, 4]
 	// d_num_runs_out    <-- [5]
+
+	printf("success\n");
 	return 0;
 }
