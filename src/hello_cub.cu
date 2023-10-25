@@ -14,6 +14,13 @@ struct CustomMin
 using namespace cub;
 
 
+void print_int_array(int* a, int n) {
+	printf("[ ");
+	for (int i = 0; i < n; i++)
+		printf("%d ", a[i]);
+	printf("]\n");
+}
+
 int main() {
 	// Declare, allocate, and initialize device-accessible pointers for input and output
 	int          num_items = 8;        // e.g., 8
@@ -49,6 +56,8 @@ int main() {
 	// d_aggregates_out  <-- [0, 1, 6, 2, 4]
 	// d_num_runs_out    <-- [5]
 
+	print_int_array(d_unique_out, d_num_runs_out[0]);
+	print_int_array(d_aggregates_out, d_num_runs_out[0]);
 	printf("success\n");
 	return 0;
 }
