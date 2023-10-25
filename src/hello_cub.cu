@@ -6,7 +6,7 @@
 struct CustomMin
 {
 	template <typename T>
-	CUB_RUNTIME_FUNCTION __forceinline__
+	CUB_RUNTIME_FUNCTION __forceinline__ __device__
 	T operator()(const T &a, const T &b) const {
 		return (b < a) ? b : a;
 	}
