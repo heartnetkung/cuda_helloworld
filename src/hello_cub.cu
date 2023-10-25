@@ -39,7 +39,7 @@ int main() {
 	cudaMallocManaged((void**)&d_num_runs_out, sizeof(int));
 	int i = 0;
 	d_keys_in[i++] = 0; d_keys_in[i++] = 2; d_keys_in[i++] = 2; d_keys_in[i++] = 9;
-	d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 8;
+	d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 0;
 
 	i = 0;
 	d_values_in[i++] = 0; d_values_in[i++] = 7; d_values_in[i++] = 1; d_values_in[i++] = 6;
