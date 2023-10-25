@@ -53,7 +53,7 @@ int main() {
 	size_t   temp_storage_bytes = 1024;
 	cub::DeviceReduce::ReduceByKey(d_temp_storage, temp_storage_bytes, d_keys_in, d_unique_out, d_values_in, d_aggregates_out, d_num_runs_out, reduction_op, num_items);
 	// Allocate temporary storage
-	cudaMalloc(&d_temp_storage, temp_storage_bytes);
+	cudaMallocManaged(&d_temp_storage, temp_storage_bytes);
 	// Run reduce-by-key
 	cub::DeviceReduce::ReduceByKey(d_temp_storage, temp_storage_bytes, d_keys_in, d_unique_out, d_values_in, d_aggregates_out, d_num_runs_out, reduction_op, num_items);
 	// d_unique_out      <-- [0, 2, 9, 5, 8]
