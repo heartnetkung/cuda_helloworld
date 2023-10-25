@@ -6,7 +6,7 @@
 struct CustomMin
 {
 	template <typename T>
-	CUB_RUNTIME_FUNCTION __forceinline__ __device__
+	CUB_RUNTIME_FUNCTION __forceinline__
 	T operator()(const T &a, const T &b) const {
 		return (b < a) ? b : a;
 	}
@@ -35,6 +35,7 @@ int main() {
 	cudaMallocManaged((void**)&d_unique_out, sizeof(int) * num_items);
 	cudaMallocManaged((void**)&d_aggregates_out, sizeof(int) * num_items);
 	cudaMallocManaged((void**)&d_num_runs_out, sizeof(int));
+
 	int i = 0;
 	d_keys_in[i++] = 0; d_keys_in[i++] = 2; d_keys_in[i++] = 2; d_keys_in[i++] = 9;
 	d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 5; d_keys_in[i++] = 0;
