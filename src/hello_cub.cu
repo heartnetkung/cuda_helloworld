@@ -1,5 +1,6 @@
 // #include <cub/device/device_reduce.cuh>
 #include <cub/device/device_reduce.cuh>
+#include <stdio.h>
 
 // CustomMin functor
 struct CustomMin
@@ -44,6 +45,9 @@ int main() {
 	d_values_in[i++] = 0; d_values_in[i++] = 7; d_values_in[i++] = 1; d_values_in[i++] = 6;
 	d_values_in[i++] = 2; d_values_in[i++] = 5; d_values_in[i++] = 3; d_values_in[i++] = 4;
 
+	print_int_array(d_keys_in, 8);
+	print_int_array(d_values_in, 8);
+
 	// Determine temporary device storage requirements
 	void     *d_temp_storage = NULL;
 	size_t   temp_storage_bytes = 0;
@@ -56,6 +60,7 @@ int main() {
 	// d_aggregates_out  <-- [0, 1, 6, 2, 4]
 	// d_num_runs_out    <-- [5]
 
+	printf("d_num_runs_out %d",d_num_runs_out[0]);
 	print_int_array(d_unique_out, d_num_runs_out[0]);
 	print_int_array(d_aggregates_out, d_num_runs_out[0]);
 	printf("success\n");
