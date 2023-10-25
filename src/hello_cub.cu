@@ -12,8 +12,6 @@ struct CustomMin
 	}
 };
 
-using namespace cub;
-
 
 void print_int_array(int* a, int n) {
 	printf("[ ");
