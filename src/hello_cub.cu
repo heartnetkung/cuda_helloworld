@@ -22,7 +22,7 @@ void print_int_array(int* a, int n) {
 
 int getLastEl(int* arr, int n) {
 	int ans[1];
-	cudaMemcpy(ans, arr, sizeof(int), cudaMemcpyDeviceToHost);
+	cudaMemcpy(ans, arr + n - 1, sizeof(int), cudaMemcpyDeviceToHost);
 	cudaDeviceSynchronize();
 	return ans[0];
 }
