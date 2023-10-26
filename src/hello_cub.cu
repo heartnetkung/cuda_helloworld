@@ -20,6 +20,13 @@ void print_int_array(int* a, int n) {
 	printf("]\n");
 }
 
+int getLastEl(int* arr, int n) {
+	int ans[1];
+	cudaMemcpy(ans, arr, sizeof(int), cudaMemcpyDeviceToHost);
+	cudaDeviceSynchronize();
+	return ans[0];
+}
+
 int main() {
 	// Declare, allocate, and initialize device-accessible pointers for input and output
 	int          num_items = 8;        // e.g., 8
@@ -60,9 +67,11 @@ int main() {
 	// d_num_runs_out    <-- [5]
 
 	cudaDeviceSynchronize();
-	printf("d_num_runs_out %d",d_num_runs_out[0]);
+	printf("d_num_runs_out %d", d_num_runs_out[0]);
 	print_int_array(d_unique_out, d_num_runs_out[0]);
 	print_int_array(d_aggregates_out, d_num_runs_out[0]);
 	printf("success\n");
+
+	printf("lastEl: %d\n", getLastEl(d_aggregates_out, d_num_runs_out[0]));
 	return 0;
 }
